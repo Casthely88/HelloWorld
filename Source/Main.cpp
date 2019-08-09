@@ -10,7 +10,25 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "MainComponent.h"
+struct Person
+{
+    Person();
+    int age, heightInInches, distanceTraveled;
+    float hairLength, GPA;
+    unsigned int SATScore;
 
+//    int run(int howFast, bool startWithLeftFoot);
+};
+
+Person::Person()
+{
+    age = 0;
+    heightInInches = 0;
+    hairLength = 0.f;
+    GPA = 0.f;
+    SATScore = 0;
+    distanceTraveled = 0;
+}
 //==============================================================================
 class HelloWorldApplication  : public JUCEApplication
 {
@@ -26,7 +44,8 @@ public:
     void initialise (const String& commandLine) override
     {
         // This method is where you should put your application's initialisation code..
-
+        Person person;
+        DBG( person.age );
         mainWindow.reset (new MainWindow (getApplicationName()));
     }
 
