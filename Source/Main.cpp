@@ -12,23 +12,45 @@
 #include "MainComponent.h"
 struct Person
 {
+    int age = 0;
+    int heightInInches =0;
+    float hairLength{0.f};
+    float GPA = 0.f;
+    unsigned int SATScore { 0 };
+    int distanceTraveled = 0;
+    
     Person();
-    int age, heightInInches, distanceTraveled;
-    float hairLength, GPA;
-    unsigned int SATScore;
-
-//    int run(int howFast, bool startWithLeftFoot);
 };
 
-Person::Person()
+Person::Person() {}
+
+struct IntValue
 {
-    age = 0;
-    heightInInches = 0;
-    hairLength = 0.f;
-    GPA = 0.f;
-    SATScore = 0;
-    distanceTraveled = 0;
+    IntValue()
+    {
+        DBG( "IntValue constructor" );
+    }
+    ~IntValue()
+    {
+        DBG( "IntValue destructor" );
+    }
+    int value;
+};
+
+int functionA(int val)
+{
+    IntValue a;
+    a.value = 5;
+    return val * 2 + a.value;
 }
+
+void functionB()
+{
+    IntValue val;
+    val.value = functionA(3);
+    val.value *= 4;
+}
+
 //==============================================================================
 class HelloWorldApplication  : public JUCEApplication
 {
