@@ -54,11 +54,32 @@ void functionB()
 void functionC()
 {
 	int i = 0;
-	while (i < 3)
+	while ( i < 3 )
 	{
 		IntValue a;
 		a.value += i;
 	}
+    
+//    for ( int i = 0; i < 3; i += 1) becomes
+    {
+        int i = 0;
+        while( i < 3 )
+        {
+            IntValue a;
+            a.value += i;
+            i += 1;
+        }
+    }
+}
+
+void whileTest()
+{
+    bool b = true;
+    while( b )
+    {
+        b = false;
+        DBG( "b is " << (b? "true" : "false" ) );
+    }
 }
 //==============================================================================
 class HelloWorldApplication  : public JUCEApplication
@@ -75,7 +96,9 @@ public:
     void initialise (const String& commandLine) override
     {
         // This method is where you should put your application's initialisation code..
-		functionB();
+//        functionC();
+//        functionC();
+        int i = 0;
 		mainWindow.reset(new MainWindow(getApplicationName()));
     }
 
