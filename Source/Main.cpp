@@ -51,6 +51,15 @@ void functionB()
     val.value *= 4;
 }
 
+void functionC()
+{
+	int i = 0;
+	while (i < 3)
+	{
+		IntValue a;
+		a.value += i;
+	}
+}
 //==============================================================================
 class HelloWorldApplication  : public JUCEApplication
 {
@@ -66,9 +75,8 @@ public:
     void initialise (const String& commandLine) override
     {
         // This method is where you should put your application's initialisation code..
-        Person person;
-        DBG( person.age );
-        mainWindow.reset (new MainWindow (getApplicationName()));
+		functionB();
+		mainWindow.reset(new MainWindow(getApplicationName()));
     }
 
     void shutdown() override
