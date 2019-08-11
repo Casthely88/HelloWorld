@@ -10,6 +10,8 @@
 
 #include "../JuceLibraryCode/JuceHeader.h"
 #include "MainComponent.h"
+
+
 struct Person
 {
     int age = 0;
@@ -18,11 +20,18 @@ struct Person
     float GPA = 0.f;
     unsigned int SATScore { 0 };
     int distanceTraveled = 0;
+    String name;
     
-    Person();
+    Person(String personsName) : name(personsName)
+    {
+        DBG( "Person ctor: " + name );
+    }
+    ~Person()
+    {
+        DBG( "Person dtor: " + name );
+    }
 };
 
-Person::Person() {}
 
 struct IntValue
 {
@@ -81,6 +90,25 @@ void whileTest()
         DBG( "b is " << (b? "true" : "false" ) );
     }
 }
+
+struct Family
+{
+    Family() { DBG( "family ctor" ); }
+    ~Family() { DBG( "family dtor" ); }
+    
+    Person mom{"mom"};
+    Person dad{"dad"};
+    Person child1{"c1"};
+    Person child2{"c2"};
+    
+};
+
+void familyFunction()
+{
+    Family family;
+}
+
+
 //==============================================================================
 class HelloWorldApplication  : public JUCEApplication
 {
@@ -98,7 +126,7 @@ public:
         // This method is where you should put your application's initialisation code..
 //        functionC();
 //        functionC();
-        int i = 0;
+        familyFunction();
 		mainWindow.reset(new MainWindow(getApplicationName()));
     }
 
