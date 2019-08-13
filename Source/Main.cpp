@@ -20,6 +20,15 @@ struct Person
     float GPA = 0.f;
     unsigned int SATScore { 0 };
     int distanceTraveled = 0;
+
+	struct Foot
+	{
+		int stepForward() { return 0; }
+	};
+	Foot leftFoot, rightFoot;
+
+	int run(int howFast, bool startWithLeftFoot);
+
     String name;
     
     Person(String personsName) : name(personsName)
@@ -31,6 +40,33 @@ struct Person
         DBG( "Person dtor: " + name );
     }
 };
+
+void moveAndSetAge(int speed, int newAge);
+
+int Person::run(int howFast, bool startWithLeftFoot)
+
+{
+	if( startWithLeftFoot )
+	{
+		return leftFoot.stepForward() + rightFoot.stepForward();
+	}
+
+	return rightFoot.stepForward() + leftFoot.stepForward();
+}
+
+void Person::moveAndSetAge(int speed, int newAge)
+{
+	run(speed, true);
+	age = newAge;
+}
+
+void doStuff()
+{
+	Person p{ "person" };
+	p.moveAndSetAge(5, 42);	
+}
+
+
 
 
 struct IntValue
