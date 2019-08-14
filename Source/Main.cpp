@@ -14,26 +14,14 @@
 
 struct Person
 {
-    int age = 0;
+	int age;// = 0;
     int heightInInches =0;
     float hairLength{0.f};
     float GPA = 0.f;
     unsigned int SATScore { 0 };
     int distanceTraveled = 0;
 
-	struct Foot
-	{
-		int stepForward() { return 0; }
-	};
-	Foot leftFoot, rightFoot;
-
 	int run(int howFast, bool startWithLeftFoot);
-
-	void moveAndSetAge(int speed, int newAge);
-	
-		int jog(int slow, bool startWithLeftFoot);
-		unsigned int age = 35;
-	
 
     String name;
     
@@ -41,16 +29,29 @@ struct Person
     {
         DBG( "Person ctor: " + name );
     }
+
+	Person(int age)
+	{
+		this->age = age;
+	}
+
     ~Person()
     {
         DBG( "Person dtor: " + name );
     }
+
+	void moveAndSetAge(int speed, int newAge);
+
+	struct Foot
+	{
+		int stepForward() { return 0; }
+	};
+	Foot leftFoot, rightFoot;
 };
 
-void moveAndSetAge(int speed, int newAge);
+
 
 int Person::run(int howFast, bool startWithLeftFoot)
-
 {
 	if( startWithLeftFoot )
 	{
@@ -68,7 +69,8 @@ void Person::moveAndSetAge(int speed, int newAge)
 
 void doStuff()
 {
-	Person p{ "person" };
+//	Person p{ "person" };
+	Person p(6);
 	p.moveAndSetAge(5, 42);	
 }
 
@@ -168,7 +170,8 @@ public:
         // This method is where you should put your application's initialisation code..
 //        functionC();
 //        functionC();
-        familyFunction();
+//        familyFunction();
+		doStuff();
 		mainWindow.reset(new MainWindow(getApplicationName()));
     }
 
