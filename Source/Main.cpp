@@ -31,8 +31,8 @@ struct Person
 
 	void moveAndSetAge(int speed, int newAge);
 	
-		int run(int howFast, bool startWithLeftFoot);
-		int age = 35;
+		int jog(int slow, bool startWithLeftFoot);
+		unsigned int age = 35;
 	
 
     String name;
