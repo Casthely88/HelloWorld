@@ -29,6 +29,12 @@ struct Person
 
 	int run(int howFast, bool startWithLeftFoot);
 
+	void moveAndSetAge(int speed, int newAge);
+	
+		int run(int howFast, bool startWithLeftFoot);
+		int age = 35;
+	
+
     String name;
     
     Person(String personsName) : name(personsName)
